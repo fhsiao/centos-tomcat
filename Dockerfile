@@ -2,10 +2,32 @@
 FROM centos:centos7
 MAINTAINER kirillf
 
+# Support systemd
+ENV container docker
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
+systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+VOLUME [ "/sys/fs/cgroup" ]
+CMD ["/usr/sbin/init"]
+
+
 # Install prepare infrastructure
 RUN yum -y update && \
+ yum -y install epel && \
  yum -y install wget && \
- yum -y install tar
+ yum -y install tar && \
+ yum -y install sudo && \
+ yum -y install mlocate && \
+ yum -y install which && \
+ yum -y install vim && \
+ yum -y install ngrep && \
+ updatedb
 
 # Prepare environment 
 ENV JAVA_HOME /opt/java
