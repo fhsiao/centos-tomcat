@@ -25,8 +25,8 @@ RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=acc
 
 
 # Install Tomcat
-ENV TOMCAT_MAJOR 8
-ENV TOMCAT_VERSION 8.5.28
+ENV TOMCAT_MAJOR 7
+ENV TOMCAT_VERSION 7.0.65
 
 RUN wget http://mirror.linux-ia64.org/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
  tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
