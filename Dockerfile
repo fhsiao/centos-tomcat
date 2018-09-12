@@ -27,6 +27,8 @@ RUN  yum -y install epel-release && \
  yum -y install which && \
  yum -y install vim && \
  yum -y install ngrep && \
+ yum -y install net-snmp && \
+ yum -y install net-tools && \
  updatedb
 
 # Prepare environment 
