@@ -17,7 +17,7 @@ ENV JAVA_VERSION 8u181
 ENV JAVA_BUILD 8u181-b13
 ENV JAVA_DL_HASH 96a7b8442fe848ef90c96a2fad6ed6d1
 
-RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+RUN wget --no-check-certificate --no-cookies --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" \
  http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz && \
  tar -xvf jdk-${JAVA_VERSION}-linux-x64.tar.gz && \
  rm jdk*.tar.gz && \
@@ -28,10 +28,10 @@ RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=acc
 ENV TOMCAT_MAJOR 7
 ENV TOMCAT_VERSION 7.0.65
 
-RUN wget http://mirror.linux-ia64.org/apache/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+RUN wget https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
  tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
- rm apache-tomcat*.tar.gz && \
- mv apache-tomcat* ${CATALINA_HOME}
+ rm apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+ mv apache-tomcat-${TOMCAT_VERSION} ${CATALINA_HOME}
 
 RUN chmod +x ${CATALINA_HOME}/bin/*sh
 
