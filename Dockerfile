@@ -73,6 +73,8 @@ WORKDIR /opt/tomcat
 
 EXPOSE 8080
 EXPOSE 8009
+EXPOSE 8005
+EXPOSE 8443
 
-USER tomcat
-CMD ["tomcat.sh"]
+USER root
+CMD ["/usr/sbin/init"]
