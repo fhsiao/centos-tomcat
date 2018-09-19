@@ -20,6 +20,8 @@ CMD ["/usr/sbin/init"]
 # Install prepare infrastructure
 RUN  yum -y install epel-release && \
  yum -y update && \
+ yum -y install initscripts && \
+ yum -y install redhat-lsb-core && \
  yum -y install wget && \
  yum -y install tar && \
  yum -y install sudo && \
