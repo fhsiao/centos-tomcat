@@ -1,6 +1,6 @@
 # Centos based container with Java and Tomcat
-FROM centos:centos7
-MAINTAINER kirillf
+FROM centos:centos6
+MAINTAINER fhsiao
 
 # Support systemd
 ENV container docker
